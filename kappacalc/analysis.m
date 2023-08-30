@@ -27,11 +27,10 @@ end
 saveas(gca,'Figures\uvsalpha.png')
 
 f0sth = linspace(-0.5,0.5,20);
-joke = 1;
 for jj = 1:length(f0sth)
     u0 = 1-2*f0sth(jj);
     Le = @(x) exp(u0*x).*exp(2*x)./(1+exp(x)).^4;
-    kaps_theo(jj) = integral(@(x) Le(x).*hypergeom([1 u0/joke],1+u0/joke,-exp(x)),-100,100)/integral(Le,-100,100);
+    kaps_theo(jj) = integral(@(x) Le(x).*hypergeom([1 u0],1+u0,-exp(x)),-100,100)/integral(Le,-100,100);
 end
 
 figure
